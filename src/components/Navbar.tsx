@@ -1,44 +1,94 @@
 import React from "react";
+import { FaRegHeart } from "react-icons/fa";
+import { IoCartOutline } from "react-icons/io5";
+import { FaRegBell } from "react-icons/fa";
+import { HiOutlineCreditCard } from "react-icons/hi2";
+import { FiMenu } from "react-icons/fi";
+import { IoMdArrowDropdown } from "react-icons/io";
+import { Avatar, Button } from "@material-tailwind/react";
+import { CiSearch } from "react-icons/ci";
 
 const Navbar: React.FC = () => {
   return (
     <nav className="bg-white text-black p-4">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center flex-shrink-0 text-black mr-6">
-          <span className="font-semibold text-xl">MyApp</span>
+          <a
+            href="#"
+            className="block mt-4 lg:inline-block lg:mt-0 text-black mr-4"
+          >
+            <FiMenu />
+          </a>
+          <img
+            src="https://i.ibb.co/ynLNf5P/Whats-App-Image-2023-12-01-at-9-13-06-PM.jpg"
+            alt="logo"
+            className="w-8 h-8" // Set the width and height of the image
+          />
+          <span className="hidden lg:inline-block ml-4 text">Catalog</span>
+          <span className="hidden lg:inline-block ml-4 text">BuyDesk</span>
+          <span className="hidden lg:inline-block ml-4 text">History</span>
+          <span className="hidden lg:inline-block ml-4 text">Dashboard</span>
         </div>
-        <div className="block lg:hidden">
-          <button className="flex items-center px-3 py-2 border rounded text-black border-black focus:outline-none">
-            <svg
-              className="fill-current h-3 w-3"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
-          </button>
-        </div>
-        <div className="hidden lg:block">
+
+        <div>
           <div className="flex items-center">
+            <div className="relative hidden lg:block">
+              <input
+                type="text"
+                placeholder="Search"
+                className="border border-gray-300 px-2 py-2 rounded-md focus:outline-none focus:border-blue-500"
+              />
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none ">
+                <CiSearch />
+              </div>
+            </div>
+            <button
+              className="border  text-#01caca  p-2 ml-4 text-xs mr-4 hidden lg:block "
+              style={{
+                borderRadius: "4px",
+                border: "1px solid #01caca",
+                color: "#01caca ",
+              }}
+            >
+              Help
+            </button>
+
             <a
               href="#"
               className="block mt-4 lg:inline-block lg:mt-0 text-black mr-4"
             >
-              Home
+              <HiOutlineCreditCard fontSize={22} color="#666666" />
+            </a>
+
+            <a
+              href="#"
+              className="block mt-4 lg:inline-block lg:mt-0 text-black mr-4"
+            >
+              <FaRegHeart fontSize={21} color="#666666" />
             </a>
             <a
               href="#"
               className="block mt-4 lg:inline-block lg:mt-0 text-black mr-4"
             >
-              About
+              <IoCartOutline fontSize={22} color="#666666" />
             </a>
             <a
               href="#"
               className="block mt-4 lg:inline-block lg:mt-0 text-black"
             >
-              Contact
+              <FaRegBell fontSize={20} color="#666666" />
             </a>
+
+            <Avatar
+              src="https://docs.material-tailwind.com/img/face-2.jpg"
+              alt="avatar"
+              size="xs"
+              className="ml-5 "
+            />
+            <span className="text-sm text-#666666 ml-2 hidden lg:block">
+              Ashwini
+            </span>
+            <IoMdArrowDropdown fontSize={20} style={{ marginLeft: 4 }} />
           </div>
         </div>
       </div>

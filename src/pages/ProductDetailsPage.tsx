@@ -15,34 +15,6 @@ const ProdunctDetailsPage: React.FC = () => {
     <div className="container mx-auto mt-4">
       <div className={`justify-between ${isMobile ? "grid" : "flex"}`}>
         <SearchBox />
-        <div
-          className="flex gap-10"
-          style={{
-            marginLeft: isMobile ? "16px" : "",
-            marginTop: isMobile ? "10px" : "",
-          }}
-        >
-          <Button
-            className="hidden md:block"
-            style={{
-              border: "2px solid #009688",
-              color: "#009688",
-              fontWeight: 700,
-              height: 40,
-            }}
-          >
-            Upload
-          </Button>
-
-          <div className="flex gap-10 mr-4">
-            <div>
-              <Filter />
-            </div>
-            <div>
-              <Sort />
-            </div>
-          </div>
-        </div>
       </div>
       <SubNavigation />
       <ProductDetails />

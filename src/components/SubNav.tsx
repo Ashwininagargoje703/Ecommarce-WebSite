@@ -35,6 +35,7 @@ const SubNavigation: React.FC = () => {
     dispatch(updateProductOptions({ categoryId: id }));
     dispatch(getProductAPI());
     closeDropdown();
+    setShowMobileDropdown(false);
   };
 
   return (

@@ -55,14 +55,14 @@ export function ProductCard({ product }: { product: any }) {
       onClick={() => getProductDetailsAndNavigate(product.sku, product.name)}
     >
       <img
-        className="p-8 rounded-t-lg"
+        className="p-2 rounded-t-lg"
         src={
           product?.image_url ||
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUP8PLdldsnlLEKQiK4m2uTly28hfeg2-ABA&usqp=CAU"
         }
         alt="product image"
       />
-      <div className="px-5 pb-5">
+      <div className="px-3 pb-5">
         <Typography
           color="blue-gray"
           style={{
@@ -117,7 +117,7 @@ export function ProductCard({ product }: { product: any }) {
 
         <div className="flex items-center justify-between mt-4">
           {isMobile && (
-            <div className="flex gap-4 bottom-0 pb-0 mb-0">
+            <div className="flex gap-4 bottom-0 pb-0 mb-0 pr-2">
               <Button
                 style={{
                   backgroundColor: "#00B3A5",

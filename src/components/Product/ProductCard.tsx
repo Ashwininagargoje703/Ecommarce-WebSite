@@ -8,10 +8,10 @@ import {
 } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { PiHeartBold } from "react-icons/pi";
-import { useMediaQuery } from "@react-hook/media-query";
 import { useNavigate } from "react-router-dom";
 import { getProductDetailsAPI } from "../../store/product/product.actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useMediaQuery } from "@react-hook/media-query";
 
 export function ProductCard({ product }: { product: any }) {
   const navigate = useNavigate();
@@ -50,30 +50,33 @@ export function ProductCard({ product }: { product: any }) {
   const truncatedName = truncateText(product?.name || "", 5);
 
   return (
-    <Card
-      className=" border border-gray-300 flex flex-col h-full"
-      onClick={() => getProductDetailsAndNavigate(product.sku, product.name)}
-    >
-      <CardHeader shadow={false} floated={false}>
+    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <a href="#">
         <img
+          className="p-8 rounded-t-lg"
           src={
             product?.image_url ||
             "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
           }
-          alt="card-image"
+          alt="product image"
         />
-      </CardHeader>
-      <CardBody className="flex flex-col justify-between">
+      </a>
+      <div className="px-5 pb-5">
         <Typography
           color="blue-gray"
-          className={`text-base font-semibold ${
-            isMobile ? "h-12 mb-2 " : "h-14 mb-6"
-          }`}
+          style={{
+            fontSize: isMobile ? "14px" : "16px",
+            lineHeight: 1.3,
+          }}
+          className={` font-semibold ${isMobile ? "h-20 mb-4 " : "h-10 mb-2"}`}
         >
           {truncatedName}
         </Typography>
-        <p className="mt-2">
-          <strong className="text-2xl">
+        <p className="text-xs text-gray-400 font-bold">{product?.sku}</p>
+        <p className="mt-2" style={{ fontSize: "12px" }}>
+          <strong
+            style={{ fontWeight: 600, fontSize: isMobile ? "17px" : "20px" }}
+          >
             {" "}
             $ {product?.pricing?.customerPrice?.unitPrice?.value}
           </strong>{" "}
@@ -89,7 +92,6 @@ export function ProductCard({ product }: { product: any }) {
             <Typography>Delivery By : 4 -Dec- 2023</Typography>
           </div>
         )}
-
         {!isMobile && (
           <div className="mt-4 flex space-x-4 items-center justify-between">
             <div className="flex items-center border border-gray-300 p-1 rounded-md pl-4 pr-4">
@@ -112,38 +114,49 @@ export function ProductCard({ product }: { product: any }) {
           </div>
         )}
 
-        {isMobile && (
-          <div className="mt-4 flex gap-4">
-            <Button
-              style={{ backgroundColor: "#00B3A5" }}
-              onClick={handleAddToWishlist}
-            >
-              <PiHeartBold />
-            </Button>
+        <div className="flex items-center justify-between mt-4">
+          {isMobile && (
+            <div className="flex gap-4 bottom-0 pb-0 mb-0">
+              <Button
+                style={{
+                  backgroundColor: "#00B3A5",
+                  color: "white",
+                  textTransform: "none",
+                  padding: "2px 18px",
+                  height: 40,
+                }}
+                onClick={handleAddToWishlist}
+              >
+                <PiHeartBold />
+              </Button>
 
+              <Button
+                style={{
+                  backgroundColor: "#00B3A5",
+                  color: "white",
+                  textTransform: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "2px 14px",
+                }}
+              >
+                Add
+              </Button>
+            </div>
+          )}
+          {!isMobile && (
             <Button
               ripple={false}
               fullWidth={true}
               style={{ backgroundColor: "#00B3A5", color: "white" }}
-              className=" text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
+              className="text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
             >
-              Add
+              Add to Cart
             </Button>
-          </div>
-        )}
-      </CardBody>
-      {!isMobile && (
-        <CardFooter className="pt-0">
-          <Button
-            ripple={false}
-            fullWidth={true}
-            style={{ backgroundColor: "#00B3A5", color: "white" }}
-            className=" text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
-          >
-            Add to Cart
-          </Button>
-        </CardFooter>
-      )}
-    </Card>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }

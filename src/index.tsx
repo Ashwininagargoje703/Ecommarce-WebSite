@@ -1,33 +1,37 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "tailwindcss/tailwind.css";
-
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store, persistor } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
 import { SearchPage } from "./routes";
 import ProductDetails from "./components/ProductDetails";
+import Home from "./pages/Home";
+import ProdunctListingPage from "./pages/ProductListingPage";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import ProdunctDetailsPage from "./pages/ProductDetailsPage";
+import ProductListingPage from "./pages/ProductListingPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Home />,
   },
   {
     path: "/search/:term",
     element: <SearchPage />,
   },
   {
+    path: "/product-list",
+    element: <ProductListingPage />,
+  },
+  {
     path: "/product-details/:id",
-    element: <ProductDetails />,
+    element: <ProdunctDetailsPage />,
   },
 ]);
 
@@ -37,8 +41,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
+      <Navbar />
       <RouterProvider router={router} />
-      {/* <App /> */}
+      <Footer />
     </PersistGate>
   </Provider>
 );

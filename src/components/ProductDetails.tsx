@@ -49,9 +49,9 @@ const ProductDetails: React.FC = () => {
   console.log("data details", data);
 
   return (
-    <div className="flex justify-center">
-      <div className="max-w-8xl mt-8 flex gap-10">
-        <div className="max-w-4xl mt-8 flex gap-20">
+    <div className="flex justify-center m-10">
+      <div className="mt-8 flex gap-10">
+        <div className="mt-8 flex gap-20 w-3/4">
           {/* Small Image Column */}
           <div className="grid justify-start mr-10 gap-10">
             {initialImages.map((imageUrl, index) => (
@@ -68,14 +68,21 @@ const ProductDetails: React.FC = () => {
           </div>
 
           {/* Large Image */}
-          <div className="w-3/1">
-            <img src={selectedImage} alt="Product Image" />
+          <div>
+            <img
+              src={selectedImage}
+              alt="Product Image"
+              style={{
+                maxHeight: "100%",
+                maxWidth: "100%",
+              }}
+            />
           </div>
         </div>
 
         {/* Right Side - Product Details */}
 
-        <div className="w-2/1 px-20 ml-5 mt-4">
+        <div className="px-20 ml-5 mt-4 p-2">
           <h1 className="text-3xl font-bold mb-4">{productName}</h1>
           <p>
             <strong>SKU number</strong>: {data?.product?.customer_reviews?.sku}
@@ -84,7 +91,7 @@ const ProductDetails: React.FC = () => {
           <p className="text-gray-600 mb-4">
             {data?.product?.manufacturer?.details}
           </p>
-          <p className="text-gray-800 font-semibold mb-2">
+          <p className="text-gray-800 font-semibold mb-2 text-xl">
             $ {data?.product?.pricing?.customerPrice?.unitPrice?.value}
           </p>
           <div className="mt-4 flex gap-4">
@@ -122,7 +129,6 @@ const ProductDetails: React.FC = () => {
           </div>
           <br />
           <hr />
-          <br />
 
           <div>
             <Typography variant="h4">Additional Information</Typography>

@@ -1,9 +1,10 @@
 import { button } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
 import { searchProductAPI } from "../store/product/product.actions";
 import { useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { useMediaQuery } from "@react-hook/media-query";
 
 const SearchBox: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -23,12 +24,23 @@ const SearchBox: React.FC = () => {
   const searchItemChange = (value: string) => {
     setSearchTerm(value);
   };
+  const isMobile = useMediaQuery("(max-width: 640px)");
 
   return (
-    <div className="flex">
-      <div className="flex items-center border border-1 border-gray-400 py-1 relative">
+    <div
+      className="flex items-center border border-1 border-gray-300 relative h-10 justify-between"
+      style={{
+        borderTopLeftRadius: 4,
+        borderBottomLeftRadius: 4,
+        width: isMobile ? "100vw" : "60vw",
+        borderTopRightRadius: 4,
+        borderBottomRightRadius: 4,
+        height: 42,
+      }}
+    >
+      <div>
         <input
-          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-1 leading-tight focus:outline-none"
+          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-1 leading-tight focus:outline-none border-spacing-4"
           type="text"
           placeholder="Search..."
           aria-label="Search"
@@ -36,29 +48,37 @@ const SearchBox: React.FC = () => {
           onChange={(e) => searchItemChange(e.target.value)}
         />
         {searchTerm.length > 0 && (
-          <div className="absolute top-9 bg-gray-50 w-full h-50 overflow-auto z-20">
+          <div className="absolute top-12 w-full h-50 overflow-auto z-20 border-gray-300 shadow-md rounded-lg bg-white">
             {searchStrings?.map((item: string, idx: number) => (
-              <li
+              <div
                 key={idx}
                 onClick={() => {
                   searchItemChange(item);
                 }}
-                className="list-none px-2 mb-1 cursor-pointer"
               >
-                {item}
-              </li>
+                <li className="list-none px-2 mb-1 cursor-pointer pl-4 p-3 border-b border-blue-50">
+                  {item}
+                </li>
+              </div>
             ))}
           </div>
         )}
       </div>
-
-      <button
-        className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-6"
-        type="button"
+      <div
+        style={{
+          backgroundColor: "#009688",
+          height: "100%",
+          width: "110px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderTopRightRadius: 4,
+          borderBottomRightRadius: 4,
+        }}
         onClick={searchItem}
       >
-        <FaSearch />
-      </button>
+        <FaSearch style={{ color: "white" }} />
+      </div>
     </div>
   );
 };

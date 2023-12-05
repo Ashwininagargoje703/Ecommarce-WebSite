@@ -13,3 +13,5 @@ export const SEARCH_PRODUCT_SUCCESS = "search/products/success";
 export const PRODUCT_DETAILS_LOADING = "products/details/loading";
 export const PRODUCT_DETAILS_ERROR = "products/details/error";
 export const PRODUCT_DETAILS_SUCCESS = "products/details/success";
+
+export const UPDATE_PRODUCT_OPTIONS = "update/products/options";

@@ -1,4 +1,4 @@
-import { Button } from "@material-tailwind/react";
+import { Button } from "flowbite-react";
 import React, { useState } from "react";
 
 const Filter: React.FC = () => {
@@ -22,22 +22,28 @@ const Filter: React.FC = () => {
 
   const handleCustomRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomRangeValue(e.target.value);
-    // You might want to add validation for customRangeValue to ensure it's within the desired range
-    // For now, I'll assume it's a valid number input
     setRangeValue(parseInt(e.target.value, 10));
   };
 
   return (
-    <div className="mt-4" style={{ width: showList ? "300px" : "auto" }}>
-      <button
-        className="border border-gray-300 text-black py-2 px-4 rounded"
+    <div>
+      <Button
+        style={{
+          color: "black",
+          backgroundColor: "white",
+          border: "1px solid gray",
+          textTransform: "none",
+          fontWeight: 700,
+          height: 40,
+          width: 100,
+        }}
         onClick={toggleList}
       >
         Filter
-      </button>
+      </Button>
       {showList && (
         <div
-          className="mt-4  border border-gray-300 p-4"
+          className="mt-4  border border-gray-300 p-4 z-10 absolute bg-white"
           style={{ width: "250px" }}
         >
           <div className="flex items-center mb-5">

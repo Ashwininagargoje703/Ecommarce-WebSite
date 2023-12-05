@@ -11,6 +11,7 @@ import {
   PRODUCT_DETAILS_LOADING,
   PRODUCT_DETAILS_ERROR,
   PRODUCT_DETAILS_SUCCESS,
+  UPDATE_PRODUCT_OPTIONS,
 } from "./product.types";
 
 const initialState = {
@@ -18,6 +19,8 @@ const initialState = {
   error: false,
   data: [],
   page: 1,
+  filter: "",
+  categoryId: "45974",
 };
 
 const categoryState = {
@@ -61,6 +64,13 @@ export const productReducer = (state = initialState, action: any) => {
         loading: false,
         error: false,
         data: action.payload,
+      };
+    }
+    case UPDATE_PRODUCT_OPTIONS: {
+      return {
+        ...state,
+        categoryId: action.payload.categoryId || state.categoryId,
+        page: action.payload.page || state.page,
       };
     }
     default: {

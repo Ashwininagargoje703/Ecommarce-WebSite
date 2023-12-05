@@ -1,22 +1,17 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./pages/Home";
 import "tailwindcss/tailwind.css";
 import Navbar from "./components/Navbar";
 import SearchBox from "./components/SearchBar";
 import Slider from "./components/Slider";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getProductAPI,
-  getProductCategoryAPI,
-} from "./store/product/product.actions";
-// import Categories from "./components/Categories";
 import Product from "./components/Product";
 import ProductList from "./components/ProductList";
-import SliderPage from "./components/SellingProducts";
 import Filter from "./components/Filter";
+import Sort from "./components/Product/Sort";
 import Categories from "./components/Categories";
 import SubNavigation from "./components/SubNav";
+import Footer from "./components/Footer";
+import BestSellingProducts from "./components/BestSellingProducts";
 
 const App: React.FC = () => {
   const dispatch = useDispatch<any>();
@@ -24,20 +19,22 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar />
       <SearchBox />
       <br />
-      <SubNavigation />
+      <SubNavigation /> */}
       {/* <Filter /> */}
       {/* <Categories /> */}
       <br />
       <br />
+      {/* <Sort /> */}
+      {/* <Slider />
+      <Home /> */}
 
-      <Slider />
-      <Home />
+      {/* <Product />
 
-      {/* <Product /> */}
-      {/* <ProductList /> */}
+      <ProductList />
+      <Product /> */}
 
       {/* <SliderPage /> */}
 

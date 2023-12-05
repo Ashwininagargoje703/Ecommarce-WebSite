@@ -3,12 +3,18 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
-import { getProductCategoryAPI } from "../store/product/product.actions";
-import CategoriesCard from "./Categories/CategoriesCard";
 import { useDispatch, useSelector } from "react-redux";
+import { getProductAPI } from "../store/product/product.actions";
+import { ProductCard } from "./Product/ProductCard";
+import { Typography } from "@material-tailwind/react";
 
 interface ArrowProps {
   onClick: () => void;
+}
+
+interface Product {
+  name: string;
+  // Other properties of the product
 }
 interface ResponsiveObject {
   breakpoint: number;
@@ -30,8 +36,6 @@ interface Settings {
   nextArrow?: JSX.Element;
   className?: string;
   responsive?: ResponsiveObject[];
-
-  // Other properties specific to your settings
 }
 
 const PrevArrow: FunctionComponent<ArrowProps> = ({ onClick }) => (
@@ -54,16 +58,16 @@ const NextArrow: FunctionComponent<ArrowProps> = ({ onClick }) => (
   </div>
 );
 
-const SliderPage: React.FC = () => {
+const NewArrivals: React.FC = () => {
   const settings: Settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 3,
     arrows: true,
-    prevArrow: <PrevArrow onClick={() => {}} />, // Pass onClick prop
-    nextArrow: <NextArrow onClick={() => {}} />, // Pass onClick prop
+    prevArrow: <PrevArrow onClick={() => {}} />,
+    nextArrow: <NextArrow onClick={() => {}} />,
     className: "myCustomCarousel",
     responsive: [
       {
@@ -97,25 +101,28 @@ const SliderPage: React.FC = () => {
   const dispatch = useDispatch<any>();
 
   useEffect(() => {
-    dispatch(getProductCategoryAPI());
-  }, []);
+    dispatch(getProductAPI(1));
+  }, [dispatch]);
 
-  const { data } = useSelector((store: any) => store.categories);
-
-  console.log("getProductCategoryAPI", data);
-  const firstFiveCategories = data ? data.slice(0, 5) : [];
+  const { data } = useSelector((store: any) => store.products);
+  const allProducts: Product[] = data?.browse?.products || [];
 
   return (
-    <div>
+    <div className=" bg-white rounded-lg shadow-md p-4 m-4">
+      <Typography style={{ fontWeight: 600 }}>NewArrivals</Typography>
       <Slider {...settings}>
-        {firstFiveCategories.map((category: any) => (
-          <div key={category.id}>
-            <CategoriesCard category={category} />
-          </div>
-        ))}
+        {allProducts.length > 0 ? (
+          allProducts.map((product: Product, index: number) => (
+            <div key={index} className="p-2">
+              <ProductCard product={product} />
+            </div>
+          ))
+        ) : (
+          <p>No products available</p>
+        )}
       </Slider>
     </div>
   );
 };
 
-export default SliderPage;
+export default NewArrivals;

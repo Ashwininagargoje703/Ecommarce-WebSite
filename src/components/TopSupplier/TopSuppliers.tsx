@@ -3,13 +3,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
-import { getProductCategoryAPI } from "../store/product/product.actions";
-import CategoriesCard from "./Categories/CategoriesCard";
+import { getProductCategoryAPI } from "../../store/product/product.actions";
+import CategoriesCard from "../Categories/CategoriesCard";
 import { useDispatch, useSelector } from "react-redux";
+import { Typography } from "@material-tailwind/react";
 
 interface ArrowProps {
   onClick: () => void;
 }
+
 interface ResponsiveObject {
   breakpoint: number;
   settings: {
@@ -19,6 +21,7 @@ interface ResponsiveObject {
     dots?: boolean;
   };
 }
+
 interface Settings {
   dots?: boolean;
   infinite?: boolean;
@@ -54,12 +57,12 @@ const NextArrow: FunctionComponent<ArrowProps> = ({ onClick }) => (
   </div>
 );
 
-const SliderPage: React.FC = () => {
+const TopSupplier: React.FC = () => {
   const settings: Settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 3,
     arrows: true,
     prevArrow: <PrevArrow onClick={() => {}} />, // Pass onClick prop
@@ -103,13 +106,13 @@ const SliderPage: React.FC = () => {
   const { data } = useSelector((store: any) => store.categories);
 
   console.log("getProductCategoryAPI", data);
-  const firstFiveCategories = data ? data.slice(0, 5) : [];
 
   return (
-    <div>
+    <div className=" bg-white rounded-lg shadow-md  m-4">
+      <Typography style={{ fontWeight: 600 }}>TOP SUPPLIER</Typography>
       <Slider {...settings}>
-        {firstFiveCategories.map((category: any) => (
-          <div key={category.id}>
+        {data.map((category: any) => (
+          <div key={category.id} className="p-2">
             <CategoriesCard category={category} />
           </div>
         ))}
@@ -118,4 +121,4 @@ const SliderPage: React.FC = () => {
   );
 };
 
-export default SliderPage;
+export default TopSupplier;

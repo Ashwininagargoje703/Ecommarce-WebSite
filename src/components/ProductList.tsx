@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ProductCard } from "../components/Product/ProductCard";
-import { Typography } from "@material-tailwind/react";
+import { Spinner, Typography } from "@material-tailwind/react";
 
 interface Product {
   name: string;
@@ -12,7 +12,11 @@ const ProductListing: React.FC = () => {
   const { data, loading } = useSelector((store: any) => store.products);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Spinner className="h-10 w-10" color="teal" />
+      </div>
+    );
   }
 
   return (

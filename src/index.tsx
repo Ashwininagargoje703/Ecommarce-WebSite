@@ -47,7 +47,6 @@ root.render(
         }}
       >
         <Navbar />
-
         <RouterProvider router={router} />
         <Footer />
       </div>

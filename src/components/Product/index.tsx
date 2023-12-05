@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getProductAPI } from "../../store/product/product.actions";
 import { ProductCard } from "./ProductCard";
 import { useNavigate } from "react-router-dom";
-import { Typography } from "@material-tailwind/react";
+import { Spinner, Typography } from "@material-tailwind/react";
 import { useDispatch, useSelector } from "react-redux";
 
 interface Product {
@@ -31,7 +31,7 @@ const Product: React.FC = () => {
   if (loading) {
     return (
       <div className="flex justify-center align-middle text-lg m-5">
-        Loading...
+        <Spinner className="h-10 w-10" color="teal" />
       </div>
     );
   }

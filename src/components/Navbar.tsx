@@ -7,8 +7,11 @@ import { FiMenu } from "react-icons/fi";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Avatar, Button } from "@material-tailwind/react";
 import { CiSearch } from "react-icons/ci";
+import { useMediaQuery } from "@react-hook/media-query";
 
 const Navbar: React.FC = () => {
+  const isMobile = useMediaQuery("(max-width: 640px)");
+
   return (
     <nav className="bg-white text-black p-4">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -57,38 +60,53 @@ const Navbar: React.FC = () => {
               href="#"
               className="block mt-4 lg:inline-block lg:mt-0 text-black mr-4"
             >
-              <HiOutlineCreditCard fontSize={22} color="#666666" />
+              <HiOutlineCreditCard fontSize={24} color="#666666" />
             </a>
 
             <a
               href="#"
               className="block mt-4 lg:inline-block lg:mt-0 text-black mr-4"
             >
-              <FaRegHeart fontSize={21} color="#666666" />
+              <FaRegHeart fontSize={23} color="#666666" />
             </a>
             <a
               href="#"
               className="block mt-4 lg:inline-block lg:mt-0 text-black mr-4"
             >
-              <IoCartOutline fontSize={22} color="#666666" />
+              <IoCartOutline fontSize={24} color="#666666" />
             </a>
             <a
               href="#"
               className="block mt-4 lg:inline-block lg:mt-0 text-black"
             >
-              <FaRegBell fontSize={20} color="#666666" />
+              <FaRegBell fontSize={22} color="#666666" />
             </a>
 
-            <Avatar
-              src="https://docs.material-tailwind.com/img/face-2.jpg"
-              alt="avatar"
-              size="xs"
-              className="ml-5 "
-            />
-            <span className="text-sm text-#666666 ml-2 hidden lg:block">
-              Ashwini
-            </span>
-            <IoMdArrowDropdown fontSize={20} style={{ marginLeft: 4 }} />
+            <div
+              className="flex"
+              style={{
+                marginTop: isMobile ? "10px" : "",
+              }}
+            >
+              <Avatar
+                src="https://docs.material-tailwind.com/img/face-2.jpg"
+                alt="avatar"
+                size="sm"
+                className="ml-5"
+              />
+              <span
+                className="text-sm text-#666666 ml-2 hidden lg:block"
+                style={{
+                  marginTop: isMobile ? "" : "10px",
+                }}
+              >
+                Ashwini
+              </span>
+              <IoMdArrowDropdown
+                fontSize={21}
+                style={{ marginLeft: 4, marginTop: isMobile ? "8px" : "10px" }}
+              />
+            </div>
           </div>
         </div>
       </div>

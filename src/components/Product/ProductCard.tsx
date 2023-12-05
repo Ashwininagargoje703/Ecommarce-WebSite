@@ -50,17 +50,18 @@ export function ProductCard({ product }: { product: any }) {
   const truncatedName = truncateText(product?.name || "", 5);
 
   return (
-    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <a href="#">
-        <img
-          className="p-8 rounded-t-lg"
-          src={
-            product?.image_url ||
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUP8PLdldsnlLEKQiK4m2uTly28hfeg2-ABA&usqp=CAU"
-          }
-          alt="product image"
-        />
-      </a>
+    <div
+      className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+      onClick={() => getProductDetailsAndNavigate(product.sku, product.name)}
+    >
+      <img
+        className="p-8 rounded-t-lg"
+        src={
+          product?.image_url ||
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUP8PLdldsnlLEKQiK4m2uTly28hfeg2-ABA&usqp=CAU"
+        }
+        alt="product image"
+      />
       <div className="px-5 pb-5">
         <Typography
           color="blue-gray"

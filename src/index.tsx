@@ -41,9 +41,16 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <Navbar />
-      <RouterProvider router={router} />
-      <Footer />
+      <div
+        style={{
+          backgroundColor: "#f8fcff",
+        }}
+      >
+        <Navbar />
+
+        <RouterProvider router={router} />
+        <Footer />
+      </div>
     </PersistGate>
   </Provider>
 );

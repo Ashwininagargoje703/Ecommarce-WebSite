@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductAPI } from "../../store/product/product.actions";
 import { Button } from "flowbite-react";
+import { BiSortAlt2 } from "react-icons/bi";
 
 export default function Sort() {
   const { data, loading } = useSelector((store: any) => store.products);
@@ -25,10 +26,10 @@ export default function Sort() {
     <div className="relative float-right">
       {/* Button to toggle sort options */}
       <Button
+        className="border-gray-300"
         style={{
           color: "black",
           backgroundColor: "white",
-          border: "1px solid gray",
           textTransform: "none",
           fontWeight: 600,
           height: 40,
@@ -36,7 +37,8 @@ export default function Sort() {
         }}
         onClick={toggleSortOptions}
       >
-        Sort
+        Sort{" "}
+        <BiSortAlt2 style={{ fontSize: 18, marginLeft: 10, marginTop: 2 }} />
       </Button>
 
       {showSortOptions && (
@@ -46,14 +48,15 @@ export default function Sort() {
               onClick={() => {
                 if (loading) return;
                 dispatch(getProductAPI(item.id));
-                toggleSortOptions(); // Hide options after selecting
+
+                // Hide options after selecting
               }}
               key={item.id}
-              className={`text-gray-900 cursor-pointer ${
+              className={`text-gray-900 cursor-pointer text-sm w-52 ${
                 data.browse.sort.appliedSort.id === item.id
-                  ? "bg-blue-500"
-                  : "bg-deep-orange-300"
-              } my-2 p-2`}
+                  ? "bg-teal-400"
+                  : "text-black"
+              }  p-2`}
             >
               {item.name}
             </div>

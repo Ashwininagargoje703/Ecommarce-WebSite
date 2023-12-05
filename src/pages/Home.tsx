@@ -18,7 +18,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="container mx-auto mt-4">
-      <div className={` justify-between mb-3 ${isMobile ? "grid" : "flex"}`}>
+      <div className={` justify-between m-4 ${isMobile ? "grid" : "flex"}`}>
         <SearchBox />
         <div className="flex gap-10">
           <Button

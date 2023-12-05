@@ -108,8 +108,10 @@ const TopSupplier: React.FC = () => {
   console.log("getProductCategoryAPI", data);
 
   return (
-    <div className=" bg-white rounded-lg shadow-md  m-4">
-      <Typography style={{ fontWeight: 600 }}>TOP SUPPLIER</Typography>
+    <div className=" bg-white rounded-lg shadow-md  m-4 p-4">
+      <Typography style={{ fontWeight: 600, marginBottom: 4 }}>
+        TOP SUPPLIER
+      </Typography>
       <Slider {...settings}>
         {data.map((category: any) => (
           <div key={category.id} className="p-2">

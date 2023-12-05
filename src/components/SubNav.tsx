@@ -39,7 +39,7 @@ const SubNavigation: React.FC = () => {
 
   return (
     <nav
-      className="bg-white py-3 border border-gray-300 ml-4 mr-4"
+      className="bg-white py-3 border border-gray-300 m-4"
       style={{
         borderRadius: 4,
       }}

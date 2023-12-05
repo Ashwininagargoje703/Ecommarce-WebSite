@@ -108,8 +108,8 @@ const BestSellingProducts: React.FC = () => {
   const allProducts: Product[] = data?.browse?.products || [];
 
   return (
-    <div className=" bg-white rounded-lg shadow-md  m-4">
-      <Typography style={{ fontWeight: 600 }}>
+    <div className=" bg-white rounded-lg shadow-md p-4 m-4">
+      <Typography style={{ fontWeight: 600, marginBottom: 4 }}>
         THE BEST SELLING ITEMS
       </Typography>
       <Slider {...settings}>

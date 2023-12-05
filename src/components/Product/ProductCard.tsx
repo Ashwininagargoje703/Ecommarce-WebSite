@@ -56,7 +56,7 @@ export function ProductCard({ product }: { product: any }) {
           className="p-8 rounded-t-lg"
           src={
             product?.image_url ||
-            "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUP8PLdldsnlLEKQiK4m2uTly28hfeg2-ABA&usqp=CAU"
           }
           alt="product image"
         />

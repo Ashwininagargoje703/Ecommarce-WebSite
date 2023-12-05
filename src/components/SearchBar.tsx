@@ -28,7 +28,7 @@ const SearchBox: React.FC = () => {
 
   return (
     <div
-      className="flex items-center border border-1 border-gray-300 relative h-10 justify-between"
+      className="flex items-center border border-1 border-gray-300 relative h-10 justify-between  "
       style={{
         borderTopLeftRadius: 4,
         borderBottomLeftRadius: 4,

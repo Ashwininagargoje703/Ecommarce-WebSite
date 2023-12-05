@@ -1,5 +1,6 @@
 import { Button } from "flowbite-react";
 import React, { useState } from "react";
+import { CiFilter } from "react-icons/ci";
 
 const Filter: React.FC = () => {
   const [showList, setShowList] = useState(false);
@@ -28,10 +29,10 @@ const Filter: React.FC = () => {
   return (
     <div>
       <Button
+        className="border-gray-300"
         style={{
           color: "black",
           backgroundColor: "white",
-          border: "1px solid gray",
           textTransform: "none",
           fontWeight: 700,
           height: 40,
@@ -39,7 +40,8 @@ const Filter: React.FC = () => {
         }}
         onClick={toggleList}
       >
-        Filter
+        Filter{" "}
+        <CiFilter style={{ fontSize: 18, marginTop: 2, marginLeft: 20 }} />
       </Button>
       {showList && (
         <div

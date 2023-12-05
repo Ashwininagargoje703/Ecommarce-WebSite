@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
   const isMobile = useMediaQuery("(max-width: 640px)");
 
   return (
-    <nav className="bg-white text-black p-4">
+    <nav className="bg-white text-black p-3">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center flex-shrink-0 text-black mr-6">
           <a

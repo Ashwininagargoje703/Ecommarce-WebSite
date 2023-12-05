@@ -147,7 +147,13 @@ const SubNavigation: React.FC = () => {
           >
             {data &&
               data.map((category: any) => (
-                <p key={category.id}>{category.displayName}</p>
+                <p
+                  key={category.id}
+                  onClick={() => changeCategory(category.categoryId)}
+                  className="cursor-pointer font-normal hover:font-semibold hover:text-teal-500"
+                >
+                  {category.displayName}
+                </p>
               ))}
           </div>
         )}

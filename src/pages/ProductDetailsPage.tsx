@@ -13,9 +13,15 @@ const ProdunctDetailsPage: React.FC = () => {
 
   return (
     <div className="container mx-auto mt-4">
-      <div className={` justify-between mb-3 ${isMobile ? "grid" : "flex"}`}>
+      <div className={`justify-between ${isMobile ? "grid" : "flex"}`}>
         <SearchBox />
-        <div className="flex gap-10">
+        <div
+          className="flex gap-10"
+          style={{
+            marginLeft: isMobile ? "16px" : "",
+            marginTop: isMobile ? "10px" : "",
+          }}
+        >
           <Button
             className="hidden md:block"
             style={{
@@ -28,7 +34,7 @@ const ProdunctDetailsPage: React.FC = () => {
             Upload
           </Button>
 
-          <div className="flex gap-10 ">
+          <div className="flex gap-10 mr-4">
             <div>
               <Filter />
             </div>

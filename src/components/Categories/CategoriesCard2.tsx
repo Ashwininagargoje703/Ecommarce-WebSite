@@ -8,12 +8,17 @@ interface Category {
 }
 interface CategoriesCardProps {
   category: Category;
-  image: string;
 }
-const CategoriesCard: React.FC<CategoriesCardProps> = ({ category, image }) => {
+const CategoriesCard2: React.FC<CategoriesCardProps> = ({ category }) => {
   return (
     <Card className=" border border-gray-300 flex flex-col h-full text-center justify-center p-2">
-      <img src={image} alt={`Category ${category.categoryId}`} />
+      <img
+        className="p-2 rounded-t-lg"
+        src={
+          "https://www.cloudways.com/blog/wp-content/uploads/Best-Dropshipping-Companies.jpg"
+        }
+        alt="product image"
+      />
 
       <Typography style={{ fontWeight: 600 }}>
         {category?.displayName}
@@ -22,4 +27,4 @@ const CategoriesCard: React.FC<CategoriesCardProps> = ({ category, image }) => {
   );
 };
 
-export default CategoriesCard;
+export default CategoriesCard2;

@@ -12,6 +12,7 @@ const initialImages = [
 ];
 
 const ProductDetails: React.FC = () => {
+  const isMobile = window.innerWidth <= 768;
   const [selectedImage, setSelectedImage] = useState<string>(initialImages[0]);
   const handleImageClick = (imageUrl: string) => {
     setSelectedImage(imageUrl);
@@ -49,114 +50,222 @@ const ProductDetails: React.FC = () => {
   console.log("data details", data);
 
   return (
-    <div className="flex justify-center m-10">
-      <div className="mt-8 flex gap-10">
-        <div className="mt-8 flex gap-20 w-3/4">
-          {/* Small Image Column */}
-          <div className="grid justify-start mr-10 gap-10">
-            {initialImages.map((imageUrl, index) => (
-              <div key={index} className="w-12">
+    <div>
+      <div className="mt-8">
+        {isMobile && (
+          <div className="m-4">
+            <div className="flex justify-center">
+              <img
+                src={selectedImage}
+                alt="Product Image"
+                style={{
+                  maxHeight: "100%",
+                  maxWidth: "100%",
+                }}
+              />
+            </div>
+            {/* Display small images in a row */}
+            <div className="flex justify-between mt-4">
+              {initialImages.map((imageUrl, index) => (
                 <img
+                  key={index}
                   src={imageUrl}
                   alt={`Product Image ${index}`}
-                  className="cursor-pointer"
+                  className="w-1/4 cursor-pointer p-4"
                   style={{ maxHeight: "100%", maxWidth: "100%" }}
                   onClick={() => handleImageClick(imageUrl)}
                 />
-              </div>
-            ))}
-          </div>
-
-          {/* Large Image */}
-          <div>
-            <img
-              src={selectedImage}
-              alt="Product Image"
-              style={{
-                maxHeight: "100%",
-                maxWidth: "100%",
-              }}
-            />
-          </div>
-        </div>
-
-        {/* Right Side - Product Details */}
-
-        <div className="px-20 ml-5 mt-4 p-2">
-          <h1 className="text-3xl font-bold mb-4">{productName}</h1>
-          <p>
-            <strong>SKU number</strong>: {data?.product?.customer_reviews?.sku}
-            {}
-          </p>
-          <p className="text-gray-600 mb-4">
-            {data?.product?.manufacturer?.details}
-          </p>
-          <p className="text-gray-800 font-semibold mb-2 text-xl">
-            $ {data?.product?.pricing?.customerPrice?.unitPrice?.value}
-          </p>
-          <div className="mt-4 flex gap-4">
-            <div className="mt-4 flex space-x-4 items-center justify-between">
-              <div className="flex items-center border border-gray-300 p-1 rounded-md pl-4 pr-4">
-                <button onClick={handleDecrement} className="border-r px-2">
-                  -
-                </button>
-                <Typography className="mx-2">{quantity}</Typography>
-                <button onClick={handleIncrement} className="border-l px-2">
-                  +
-                </button>
-              </div>
-              <div className="self-end">
-                <Button
-                  style={{
-                    backgroundColor: "#00B3A5",
-                    color: "white",
-                    textTransform: "none",
-                  }}
-                >
-                  Add
-                </Button>
-              </div>
-
-              <div className="self-end">
-                <Button
-                  style={{ backgroundColor: "#00B3A5" }}
-                  onClick={handleAddToWishlist}
-                >
-                  <PiHeartBold fontSize={16} />
-                </Button>
-              </div>
+              ))}
             </div>
           </div>
-          <br />
-          <hr />
+        )}
 
-          <div>
-            <Typography variant="h4">Additional Information</Typography>
-
+        {isMobile && (
+          <div className="m-4">
+            <h1 className="text-3xl font-bold mb-4">{productName}</h1>
             <p>
-              <strong>Manufactures Name:</strong>
-              {data?.product?.manufacturer?.name}
+              <strong>SKU number</strong>:{" "}
+              {data?.product?.customer_reviews?.sku}
+              {}
             </p>
-
-            <p>
-              <strong>Manufactures Details:</strong>
+            <p className="text-gray-600 mb-4">
               {data?.product?.manufacturer?.details}
             </p>
-
-            <p>
-              <strong>Days to Deliver:</strong>4 Days
+            <p className="text-gray-800 font-semibold mb-2 text-xl">
+              $ {data?.product?.pricing?.customerPrice?.unitPrice?.value}
             </p>
+            <div className="mt-4 flex gap-4">
+              <div className="mt-4 flex space-x-4 items-center justify-between">
+                <div className="flex items-center border border-gray-300 p-1 rounded-md pl-4 pr-4">
+                  <button onClick={handleDecrement} className="border-r px-2">
+                    -
+                  </button>
+                  <Typography className="mx-2">{quantity}</Typography>
+                  <button onClick={handleIncrement} className="border-l px-2">
+                    +
+                  </button>
+                </div>
+                <div className="self-end">
+                  <Button
+                    style={{
+                      backgroundColor: "#00B3A5",
+                      color: "white",
+                      textTransform: "none",
+                    }}
+                  >
+                    Add
+                  </Button>
+                </div>
 
-            <p>
-              <strong>Contry of Origin:</strong>4 Days
-            </p>
+                <div className="self-end">
+                  <Button
+                    style={{ backgroundColor: "#00B3A5" }}
+                    onClick={handleAddToWishlist}
+                  >
+                    <PiHeartBold fontSize={16} />
+                  </Button>
+                </div>
+              </div>
+            </div>
+            <br />
+            <hr />
 
-            <p>
-              <strong>Package Size:</strong>
-              {data?.product?.display_info?.dimensions?.weight} kg
-            </p>
+            <div>
+              <Typography variant="h4">Additional Information</Typography>
+
+              <p>
+                <strong>Manufactures Name:</strong>
+                {data?.product?.manufacturer?.name}
+              </p>
+
+              <p>
+                <strong>Manufactures Details:</strong>
+                {data?.product?.manufacturer?.details}
+              </p>
+
+              <p>
+                <strong>Days to Deliver:</strong>4 Days
+              </p>
+
+              <p>
+                <strong>Contry of Origin:</strong>4 Days
+              </p>
+
+              <p>
+                <strong>Package Size:</strong>
+                {data?.product?.display_info?.dimensions?.weight} kg
+              </p>
+            </div>
           </div>
-        </div>
+        )}
+      </div>
+
+      <div className="flex justify-center m-4">
+        {!isMobile && (
+          <div className="mt-8 flex gap-20 w-3/4">
+            <div className="grid justify-start mr-10 gap-10">
+              {initialImages.map((imageUrl, index) => (
+                <div key={index} className="w-12">
+                  <img
+                    src={imageUrl}
+                    alt={`Product Image ${index}`}
+                    className="cursor-pointer"
+                    style={{ maxHeight: "100%", maxWidth: "100%" }}
+                    onClick={() => handleImageClick(imageUrl)}
+                  />
+                </div>
+              ))}
+            </div>
+            <div>
+              <img
+                src={selectedImage}
+                alt="Product Image"
+                style={{
+                  maxHeight: "100%",
+                  maxWidth: "100%",
+                }}
+              />
+            </div>
+          </div>
+        )}
+        {!isMobile && (
+          <div className="px-20 ml-5 mt-4 p-2">
+            <h1 className="text-3xl font-bold mb-4">{productName}</h1>
+            <p>
+              <strong>SKU number</strong>:{" "}
+              {data?.product?.customer_reviews?.sku}
+              {}
+            </p>
+            <p className="text-gray-600 mb-4">
+              {data?.product?.manufacturer?.details}
+            </p>
+            <p className="text-gray-800 font-semibold mb-2 text-xl">
+              $ {data?.product?.pricing?.customerPrice?.unitPrice?.value}
+            </p>
+            <div className="mt-4 flex gap-4">
+              <div className="mt-4 flex space-x-4 items-center justify-between">
+                <div className="flex items-center border border-gray-300 p-1 rounded-md pl-4 pr-4">
+                  <button onClick={handleDecrement} className="border-r px-2">
+                    -
+                  </button>
+                  <Typography className="mx-2">{quantity}</Typography>
+                  <button onClick={handleIncrement} className="border-l px-2">
+                    +
+                  </button>
+                </div>
+                <div className="self-end">
+                  <Button
+                    style={{
+                      backgroundColor: "#00B3A5",
+                      color: "white",
+                      textTransform: "none",
+                    }}
+                  >
+                    Add
+                  </Button>
+                </div>
+
+                <div className="self-end">
+                  <Button
+                    style={{ backgroundColor: "#00B3A5" }}
+                    onClick={handleAddToWishlist}
+                  >
+                    <PiHeartBold fontSize={16} />
+                  </Button>
+                </div>
+              </div>
+            </div>
+            <br />
+            <hr />
+
+            <div>
+              <Typography variant="h4">Additional Information</Typography>
+
+              <p>
+                <strong>Manufactures Name:</strong>
+                {data?.product?.manufacturer?.name}
+              </p>
+
+              <p>
+                <strong>Manufactures Details:</strong>
+                {data?.product?.manufacturer?.details}
+              </p>
+
+              <p>
+                <strong>Days to Deliver:</strong>4 Days
+              </p>
+
+              <p>
+                <strong>Contry of Origin:</strong>4 Days
+              </p>
+
+              <p>
+                <strong>Package Size:</strong>
+                {data?.product?.display_info?.dimensions?.weight} kg
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

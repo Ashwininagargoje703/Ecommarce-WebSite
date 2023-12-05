@@ -6,6 +6,7 @@ import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 import { getProductCategoryAPI } from "../store/product/product.actions";
 import CategoriesCard from "./Categories/CategoriesCard";
 import { useDispatch, useSelector } from "react-redux";
+import CategoriesCard2 from "./Categories/CategoriesCard2";
 
 interface ArrowProps {
   onClick: () => void;
@@ -110,7 +111,7 @@ const SliderPage: React.FC = () => {
       <Slider {...settings}>
         {firstFiveCategories.map((category: any) => (
           <div key={category.id}>
-            <CategoriesCard category={category} />
+            <CategoriesCard2 category={category} />
           </div>
         ))}
       </Slider>

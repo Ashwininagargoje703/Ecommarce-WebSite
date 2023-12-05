@@ -7,6 +7,7 @@ import { getProductCategoryAPI } from "../../store/product/product.actions";
 import CategoriesCard from "../Categories/CategoriesCard";
 import { useDispatch, useSelector } from "react-redux";
 import { Typography } from "@material-tailwind/react";
+import CategoriesCard2 from "../Categories/CategoriesCard2";
 
 interface ArrowProps {
   onClick: () => void;
@@ -115,7 +116,7 @@ const TopSupplier: React.FC = () => {
       <Slider {...settings}>
         {data.map((category: any) => (
           <div key={category.id} className="p-2">
-            <CategoriesCard category={category} />
+            <CategoriesCard2 category={category} />
           </div>
         ))}
       </Slider>

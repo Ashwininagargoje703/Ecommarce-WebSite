@@ -39,7 +39,7 @@ const Home: React.FC = () => {
             Upload
           </Button>
 
-          <div className="flex gap-10 ">
+          <div className="flex gap-10 mr-4">
             <div>
               <Filter />
             </div>

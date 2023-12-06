@@ -69,7 +69,7 @@ export function ProductCard({ product }: { product: any }) {
             fontSize: isMobile ? "14px" : "16px",
             lineHeight: 1.3,
           }}
-          className={` font-semibold ${isMobile ? "h-20 mb-4 " : "h-10 mb-2"}`}
+          className={` font-semibold ${isMobile ? "h-14 mb-4 " : "h-10 mb-2"}`}
         >
           {truncatedName}
         </Typography>

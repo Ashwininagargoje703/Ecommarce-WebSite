@@ -14,7 +14,7 @@ import {
   PRODUCT_DETAILS_SUCCESS,
   UPDATE_PRODUCT_OPTIONS,
 } from "./product.types";
-import { customAxios } from "../../https";
+import { customAxios } from "../../api/wayfairApi";
 
 export const getProductAPI =
   (sortId?: number) => async (dispatch: Dispatch, getState: any) => {

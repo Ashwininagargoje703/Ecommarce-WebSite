@@ -12,6 +12,7 @@ import { useMediaQuery } from "@react-hook/media-query";
 
 import { Button, Footer } from "flowbite-react";
 import Slider from "../components/Slider";
+import SerchingForPage from "../components/Serchingfor";
 
 const Home: React.FC = () => {
   const isMobile = useMediaQuery("(max-width: 640px)");
@@ -98,6 +99,7 @@ const Home: React.FC = () => {
           ↑
         </Button>
       )}
+      <SerchingForPage />
       <Footer />
     </div>
   );

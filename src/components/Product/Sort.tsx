@@ -48,6 +48,7 @@ export default function Sort() {
               onClick={() => {
                 if (loading) return;
                 dispatch(getProductAPI(item.id));
+                toggleSortOptions();
 
                 // Hide options after selecting
               }}

@@ -35,9 +35,7 @@ const SubNavigation: React.FC = () => {
     dispatch(updateProductOptions({ categoryId: id }));
     dispatch(getProductAPI());
     closeDropdown();
-    setShowMobileDropdown(false);
   };
-
   return (
     <nav
       className="bg-white py-3 border border-gray-300 m-4"

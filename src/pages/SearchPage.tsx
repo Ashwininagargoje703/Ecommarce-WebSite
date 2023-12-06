@@ -9,6 +9,7 @@ import SubNavigation from "../components/SubNav";
 import Navbar from "../components/Navbar";
 import { Button } from "flowbite-react";
 import { useMediaQuery } from "@react-hook/media-query";
+import { Spinner } from "@material-tailwind/react";
 
 const SearchPage: React.FC = () => {
   const { loading, error, data } = useSelector((store: any) => store.search);
@@ -27,9 +28,15 @@ const SearchPage: React.FC = () => {
 
   return (
     <div className="container mx-auto mt-4">
-      <div className={` justify-between mb-3 ${isMobile ? "grid" : "flex"}`}>
+      <div className={`justify-between ${isMobile ? "grid" : "flex"}`}>
         <SearchBox />
-        <div className="flex gap-10">
+        <div
+          className="flex gap-10"
+          style={{
+            marginLeft: isMobile ? "16px" : "",
+            marginTop: isMobile ? "10px" : "",
+          }}
+        >
           <Button
             className="hidden md:block"
             style={{
@@ -42,7 +49,7 @@ const SearchPage: React.FC = () => {
             Upload
           </Button>
 
-          <div className="flex gap-10 ">
+          <div className="flex gap-10 mr-4">
             <div>
               <Filter />
             </div>
@@ -53,8 +60,12 @@ const SearchPage: React.FC = () => {
         </div>
       </div>
       <SubNavigation />
-      <p className="my-5">Results for "{term}"</p>
-      {loading && <p className="text-blue-300">loading...</p>}
+      <p className="m-4 font-semibold">Results for "{term}"</p>
+      {loading && (
+        <p className="text-blue-300">
+          <Spinner className="h-10 w-10" color="teal" />
+        </p>
+      )}
       {error && (
         <p className="text-red-300">something went wrong while fetching data</p>
       )}

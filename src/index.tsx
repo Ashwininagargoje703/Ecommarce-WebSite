@@ -14,7 +14,6 @@ import ProdunctListingPage from "./pages/ProductListingPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProdunctDetailsPage from "./pages/ProductDetailsPage";
-import ProductListingPage from "./pages/ProductListingPage";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +26,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/product-list",
-    element: <ProductListingPage />,
+    element: <ProdunctListingPage />,
   },
   {
     path: "/product-details/:id",
@@ -41,11 +40,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <div
-        style={{
-          backgroundColor: "#f8fcff",
-        }}
-      >
+      <div style={{ backgroundColor: "#f8fcff" }}>
         <Navbar />
         <RouterProvider router={router} />
         <Footer />

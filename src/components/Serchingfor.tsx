@@ -47,7 +47,7 @@ const SerchingForPage: React.FC = () => {
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="flex flex-wrap">
           {itemList.map((item, index) => (
             <Chip
               variant="outlined"

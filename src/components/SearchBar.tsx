@@ -32,7 +32,7 @@ const SearchBox: React.FC = () => {
       style={{
         borderTopLeftRadius: 4,
         borderBottomLeftRadius: 4,
-        width: isMobile ? "90vw" : "60vw",
+        width: isMobile ? "91vw" : "60vw",
         borderTopRightRadius: 4,
         borderBottomRightRadius: 4,
         height: 42,
@@ -40,7 +40,7 @@ const SearchBox: React.FC = () => {
     >
       <div>
         <input
-          className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-1 leading-tight focus:outline-none border-spacing-4"
+          className="appearance-none bg-white border-none w-full text-gray-700 mr-3 py-1 px-1 leading-tight focus:outline-none border-spacing-4"
           type="text"
           placeholder="Search..."
           aria-label="Search"
@@ -68,7 +68,7 @@ const SearchBox: React.FC = () => {
         style={{
           backgroundColor: "#009688",
           height: "100%",
-          width: "110px",
+          width: "90px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

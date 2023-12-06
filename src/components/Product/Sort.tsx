@@ -6,6 +6,7 @@ import { BiSortAlt2 } from "react-icons/bi";
 
 export default function Sort() {
   const { data, loading } = useSelector((store: any) => store.products);
+  console.log("sort", data);
   const dispatch = useDispatch<any>();
   const [showSortOptions, setShowSortOptions] = useState(false); // State to manage visibility of sort options
 

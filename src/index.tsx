@@ -9,16 +9,16 @@ import { store, persistor } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
 import { SearchPage } from "./routes";
 import ProductDetails from "./components/ProductDetails";
-import Home from "./pages/Home";
 import ProdunctListingPage from "./pages/ProductListingPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProdunctDetailsPage from "./pages/ProductDetailsPage";
+import App from "./App";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <App />,
   },
   {
     path: "/search/:term",

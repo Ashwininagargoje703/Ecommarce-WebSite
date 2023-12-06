@@ -8,6 +8,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { Avatar, Button } from "@material-tailwind/react";
 import { CiSearch } from "react-icons/ci";
 import { useMediaQuery } from "@react-hook/media-query";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const isMobile = useMediaQuery("(max-width: 640px)");
@@ -25,8 +26,9 @@ const Navbar: React.FC = () => {
           <img
             src="https://i.ibb.co/ynLNf5P/Whats-App-Image-2023-12-01-at-9-13-06-PM.jpg"
             alt="logo"
-            className="w-8 h-8" // Set the width and height of the image
+            className="w-8 h-8"
           />
+
           <span className="hidden lg:inline-block ml-4 text">Catalog</span>
           <span className="hidden lg:inline-block ml-4 text">BuyDesk</span>
           <span className="hidden lg:inline-block ml-4 text">History</span>

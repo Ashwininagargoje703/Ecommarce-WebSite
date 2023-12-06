@@ -9,9 +9,7 @@ interface Product {
   name: string;
   // Other properties of the product
 }
-
 const Product: React.FC = () => {
-  const dispatch = useDispatch<any>();
   const [showAll, setShowAll] = useState(false);
   const navigate = useNavigate();
   const initialDisplayCount = 15;
@@ -21,9 +19,6 @@ const Product: React.FC = () => {
   };
 
   const { data, loading } = useSelector((store: any) => store.products);
-
-  console.log(data, "data");
-
   const visibleProducts = showAll
     ? data?.browse?.products || []
     : data?.browse?.products?.slice(0, initialDisplayCount) || [];

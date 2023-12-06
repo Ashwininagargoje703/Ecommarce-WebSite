@@ -36,6 +36,7 @@ const SearchBox: React.FC = () => {
         borderTopRightRadius: 4,
         borderBottomRightRadius: 4,
         height: 42,
+        backgroundColor: "white",
       }}
     >
       <div>

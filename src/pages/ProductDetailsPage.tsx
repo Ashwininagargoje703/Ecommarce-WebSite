@@ -7,6 +7,7 @@ import Filter from "../components/Filter";
 import Sort from "../components/Product/Sort";
 import SubNavigation from "../components/SubNav";
 import { useMediaQuery } from "@react-hook/media-query";
+import SerchingForPage from "../components/Serchingfor";
 
 const ProdunctDetailsPage: React.FC = () => {
   const isMobile = useMediaQuery("(max-width: 640px)");
@@ -42,6 +43,7 @@ const ProdunctDetailsPage: React.FC = () => {
       <SubNavigation />
       <ProductDetails />
       <BestSellingProducts />
+      <SerchingForPage />
 
       {showGoToTop && (
         <Button

@@ -10,6 +10,7 @@ import Navbar from "../components/Navbar";
 import { Button } from "flowbite-react";
 import { useMediaQuery } from "@react-hook/media-query";
 import { Spinner } from "@material-tailwind/react";
+import SerchingForPage from "../components/Serchingfor";
 
 const SearchPage: React.FC = () => {
   const { loading, error, data } = useSelector((store: any) => store.search);
@@ -102,6 +103,7 @@ const SearchPage: React.FC = () => {
             <SearchProductCard key={idx} product={dataExtractor(item)} />
           ))}
       </div>
+      <SerchingForPage />
 
       {showGoToTop && (
         <Button

@@ -8,6 +8,7 @@ import SubNavigation from "../components/SubNav";
 import { Button } from "flowbite-react";
 import SearchBox from "../components/SearchBar";
 import { useMediaQuery } from "@react-hook/media-query";
+import SerchingForPage from "../components/Serchingfor";
 
 interface Product {
   name: string;
@@ -74,6 +75,8 @@ const ProductListingPage: React.FC = () => {
       </div>
       <SubNavigation />
       <ProductListing />
+
+      <SerchingForPage />
 
       {showGoToTop && (
         <Button

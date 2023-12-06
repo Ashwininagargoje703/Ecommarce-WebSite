@@ -5,13 +5,13 @@ import SearchBox from "./components/SearchBar";
 import { Button, Footer } from "flowbite-react";
 import Filter from "./components/Filter";
 import Sort from "./components/Product/Sort";
-import Slider from "react-slick";
 import SubNavigation from "./components/SubNav";
 import Categories from "./components/Categories";
 import BestSellingProducts from "./components/BestSellingProducts";
 import Product from "./components/Product";
 import TopSupplier from "./components/TopSupplier/TopSuppliers";
 import SerchingForPage from "./components/Serchingfor";
+import Slider from "./components/Slider";
 
 const App: React.FC = () => {
   const isMobile = useMediaQuery("(max-width: 640px)");

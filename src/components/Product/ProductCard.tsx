@@ -66,7 +66,7 @@ export function ProductCard({ product }: { product: any }) {
         <Typography
           color="blue-gray"
           style={{
-            fontSize: isMobile ? "14px" : "16px",
+            fontSize: isMobile ? "14px" : "14px",
             lineHeight: 1.3,
           }}
           className={` font-semibold ${isMobile ? "h-14 mb-4 " : "h-10 mb-2"}`}
@@ -86,11 +86,17 @@ export function ProductCard({ product }: { product: any }) {
 
         {!isMobile && (
           <div>
-            <Typography style={{ color: "#00B3A5", fontWeight: 600 }}>
+            <Typography
+              style={{ color: "#00B3A5", fontWeight: 600, fontSize: 14 }}
+            >
               Saving % 4.60
             </Typography>
-            <Typography>Supplier : Supplier</Typography>
-            <Typography>Delivery By : 4 -Dec- 2023</Typography>
+            <Typography style={{ fontSize: 14 }}>
+              Supplier : Supplier
+            </Typography>
+            <Typography style={{ fontSize: 14 }}>
+              Delivery By : 4 -Dec- 2023
+            </Typography>
           </div>
         )}
         {!isMobile && (

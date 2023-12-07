@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
 import { Card, Typography } from "@material-tailwind/react";
 
 interface Category {

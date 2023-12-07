@@ -15,7 +15,7 @@ const CategoriesCard2: React.FC<CategoriesCardProps> = ({ category }) => {
       <img
         className="p-2 rounded-t-lg"
         src={
-          "https://www.cloudways.com/blog/wp-content/uploads/Best-Dropshipping-Companies.jpg"
+          "https://www.insaraf.com/cdn/shop/products/1304856603SC-1731.jpeg?v=1529680864"
         }
         alt="product image"
       />

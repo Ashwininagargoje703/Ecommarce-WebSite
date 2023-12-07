@@ -6,7 +6,7 @@ import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductAPI } from "../store/product/product.actions";
 import { ProductCard } from "./Product/ProductCard";
-import { Typography } from "@material-tailwind/react";
+import { Spinner, Typography } from "@material-tailwind/react";
 
 interface ArrowProps {
   onClick: () => void;
@@ -98,14 +98,15 @@ const BestSellingProducts: React.FC = () => {
     ],
   };
 
-  const dispatch = useDispatch<any>();
-
-  useEffect(() => {
-    dispatch(getProductAPI(1));
-  }, [dispatch]);
-
-  const { data } = useSelector((store: any) => store.products);
+  const { data, loading } = useSelector((store: any) => store.products);
   const allProducts: Product[] = data?.browse?.products || [];
+  if (loading) {
+    return (
+      <div className="flex justify-center align-middle text-lg m-5">
+        <Spinner className="h-10 w-10" color="teal" />
+      </div>
+    );
+  }
 
   return (
     <div className=" bg-white rounded-lg shadow-md p-4 m-4">
